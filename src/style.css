@@ -1,0 +1,64 @@
+body {
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-style: italic;
+    font-weight: 600;
+    padding-left: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #131111;
+}
+
+a:hover {
+    color: #669ff1;
+}
+
+.app {
+    max-width: 70%;
+    border: solid 1px #abd115;
+    border-radius: 5px;
+    background: linear-gradient(219deg, rgb(115, 252, 185) 0%, #669ff1 100%);
+}
+
+.button {
+    margin-left: 10px;
+    background-color: #afeeee;
+    border-radius: 10px;
+    border: solid 1px #afeeee;
+    color: #282727;
+}
+
+.button:hover {
+    background-color: #7ccde5;
+    color: beige;
+}
+
+.city {
+    background-color: #afeeee;
+    border-radius: 10px;
+    border: solid 1px #afeeee;
+    text-align: center;
+}
+
+.main {
+    text-align: center;
+    padding: 10px;
+}
+
+.footer {
+    margin: 50px 30px;
+    text-align: center;
+}
