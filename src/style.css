@@ -26,6 +26,11 @@ a:hover {
     color: #669ff1;
 }
 
+#git-hub {
+    text-decoration: underline;
+    color: dodgerblue;
+}
+
 .app {
     max-width: 70%;
     border: solid 1px #abd115;
@@ -61,4 +66,10 @@ a:hover {
 .footer {
     margin: 50px 30px;
     text-align: center;
+}
+
+.githublink {
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
 }
