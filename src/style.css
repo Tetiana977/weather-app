@@ -3,18 +3,34 @@ body {
     margin: 10px;
     font-family: 'Merriweather', serif;
     font-weight: 300;
+    color:#07076d;;
 }
 
 header {
     text-align: center;
     padding: 20px 0;
-    margin-bottom: 40px;
 }
 
 h1 {
     font-style: italic;
-    font-weight: 600;
-    padding-left: 30px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 28px;
+    color: #07076d;
+}
+
+li {
+   list-style: none; 
+   display: block;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #07076d;
+   font-size: 16px;
+   font-weight: 100;
+   text-align: left;
+}
+
+li:first-letter {
+    text-transform: capitalize;
 }
 
 a {
@@ -26,24 +42,29 @@ a:hover {
     color: #669ff1;
 }
 
-#git-hub {
-    text-decoration: underline;
-    color: dodgerblue;
+.container {
+    padding: 10px 10px 50px 10px;
 }
 
 .app {
-    max-width: 70%;
-    border: solid 1px #abd115;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: solid 1px #64bbde;
     border-radius: 5px;
     background: linear-gradient(219deg, rgb(115, 252, 185) 0%, #669ff1 100%);
 }
 
-.button {
+.header {
+    padding: 0 20px;
+}
+
+.button .form-control {
     margin-left: 10px;
     background-color: #afeeee;
     border-radius: 10px;
     border: solid 1px #afeeee;
-    color: #282727;
+    color: #07076d;
 }
 
 .button:hover {
@@ -51,7 +72,7 @@ a:hover {
     color: beige;
 }
 
-.city {
+.city .form-control {
     background-color: #afeeee;
     border-radius: 10px;
     border: solid 1px #afeeee;
@@ -63,13 +84,44 @@ a:hover {
     padding: 10px;
 }
 
+.unit {
+    position: relative;
+    font-size: 14px;
+    top: -10px;
+    color: #07076d;
+}
+
+.activ {
+    cursor: default;
+}
+
+.activ:hover {
+    color: #07076d;
+}
+
 .footer {
-    margin: 50px 30px;
+    margin: 10px;
     text-align: center;
 }
 
-.githublink {
-    padding-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: small;
+.gitHub-link {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.github {
+    color: #669ff1;
+    text-decoration: underline
+}
+
+.github:hover {
+    color: #7575d9;
+}
+
+#current-temperature {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 28px;
+    color: #07076d;
 }
