@@ -100,8 +100,20 @@ a:hover {
 }
 
 .footer {
-    margin: 10px;
+    margin: 10px 20px;
     text-align: center;
+    color: #07076d;
+}
+
+.forecast-temperature {
+    font-size: 13px;
+     color: #07076d;
+}
+
+.week-day .month {
+    font-size: 16px;
+    opacity: 0.7;  
+     color: #07076d;
 }
 
 .gitHub-link {
