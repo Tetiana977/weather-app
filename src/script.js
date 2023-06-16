@@ -21,6 +21,35 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tuesday", "Wednesday", "Thursday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2">
+          <div class="week-day">
+            ${day} 
+          </div>
+          <div class="month">
+            May 21
+          </div>
+          <div class forecast-temperature>
+            <span class="temperature-max">24°</span>
+            <span class="temperature-min">16°</span>
+          </div>
+          <div class="emoji">
+            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="" width="42" /></h2> 
+          </div>
+        </div>
+      `;
+  });
+  forecastHTML = forecastHTML + `</div>`
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let city = document.querySelector("#city");
   let temperatureElement = document.querySelector("#current-temperature");
@@ -101,3 +130,6 @@ function getUserPosition(event) {
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getUserPosition);
+
+// call function
+displayForecast();
