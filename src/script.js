@@ -122,33 +122,6 @@ function submitForm(event) {
 let formSearch = document.querySelector("#city-search");
 formSearch.addEventListener("submit", submitForm);
 
-//Display a temperature in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
-
-function changeCelsius(event) {
-  event.preventDefault();
-  celsiusElement.classList.remove("activ");
-  fahrenheitElement.classList.add("activ");
-  let currentTemperature = document.querySelector("#current-temperature");
-  let temperature = (celsiusTemperature * 9) / 5 + 32;
-  currentTemperature.innerHTML = Math.round(temperature);
-}
-
-function changeFahrenheit(event) {
-  event.preventDefault();
-  fahrenheitElement.classList.remove("activ");
-  celsiusElement.classList.add("activ");
-  let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-let fahrenheitElement = document.querySelector("#fahrenheit");
-fahrenheitElement.addEventListener("click", changeCelsius);
-
-let celsiusElement = document.querySelector("#celsius");
-celsiusElement.addEventListener("click", changeFahrenheit);
-
 // User`s current position
 
 function getPosition(position) {
