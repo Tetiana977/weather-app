@@ -41,7 +41,7 @@ function displayForecast(response) {
   let week = response.data.daily;
   //console.log(week);
   let forecastElement = document.querySelector("#forecast");
-  
+
   let forecastHTML = `<div class="row">`;
   week.forEach(function (weekDay, index) {
     if (index > 0 & index < 7) {
@@ -52,12 +52,11 @@ function displayForecast(response) {
           <div class="week-day">
             ${formatWeekDay(weekDay.dt)} 
           </div>
-          
           <div class forecast-temperature>
-            <span class="temperature-max">${Math.round(
+            <span id="forecast-max" class="temperature-max">${Math.round(
               weekDay.temp.max
             )}°</span>
-            <span class="temperature-min">${Math.round(
+            <span id="forecast-min" class="temperature-min">${Math.round(
               weekDay.temp.min
             )}°</span>
           </div>
@@ -97,6 +96,8 @@ function showTemperature(response) {
   let temperatureMin = document.querySelector("#temperature-min");
 
   celsiusTemperature = response.data.main.temp;
+  celsiusMax = response.data.main.temp_max;
+  celsiusMin = response.data.main.temp_min;
 
   city.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -131,20 +132,37 @@ function changeCelsius(event) {
   event.preventDefault();
   celsiusElement.classList.remove("activ");
   fahrenheitElement.classList.add("activ");
+
   let currentTemperature = document.querySelector("#current-temperature");
+  let temperatureMax = document.querySelector("#temperature-max");
+  let temperatureMin = document.querySelector("#temperature-min");
+
   let temperature = (celsiusTemperature * 9) / 5 + 32;
+  let currentTemperatureMax = (celsiusMax * 9) / 5 + 32;
+  let currentTemperatureMin = (celsiusMin * 9) / 5 + 32;
+
   currentTemperature.innerHTML = Math.round(temperature);
+  temperatureMax.innerHTML = `${Math.round(currentTemperatureMax)}° - `;
+  temperatureMin.innerHTML = `${Math.round(currentTemperatureMin)}°`;
 }
 
 function changeFahrenheit(event) {
   event.preventDefault();
   fahrenheitElement.classList.remove("activ");
   celsiusElement.classList.add("activ");
+
   let currentTemperature = document.querySelector("#current-temperature");
+  let temperatureMax = document.querySelector("#temperature-max");
+  let temperatureMin = document.querySelector("#temperature-min");
+
   currentTemperature.innerHTML = Math.round(celsiusTemperature);
+  temperatureMax.innerHTML = `${Math.round(celsiusMax)}° - `;
+  temperatureMin.innerHTML = `${Math.round(celsiusMin)}°`;
 }
 
 let celsiusTemperature = null;
+let celsiusMax = null;
+let celsiusMin = null;
 
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", changeCelsius);
