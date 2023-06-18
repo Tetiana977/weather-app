@@ -107,13 +107,14 @@ a:hover {
 
 .forecast-temperature {
     font-size: 13px;
-     color: #07076d;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #07076d;
 }
 
-.week-day .month {
-    font-size: 16px;
+.week-day {
+    font-size: 15px;
     opacity: 0.7;  
-     color: #07076d;
+    color: #07076d;
 }
 
 .gitHub-link {

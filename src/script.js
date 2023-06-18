@@ -39,12 +39,12 @@ function formatWeekDay(timestamp) {
 
 function displayForecast(response) {
   let week = response.data.daily;
-  console.log(week);
+  //console.log(week);
   let forecastElement = document.querySelector("#forecast");
   
   let forecastHTML = `<div class="row">`;
   week.forEach(function (weekDay, index) {
-    if (index < 6) {
+    if (index > 0 & index < 7) {
       forecastHTML =
         forecastHTML +
         `
@@ -52,9 +52,7 @@ function displayForecast(response) {
           <div class="week-day">
             ${formatWeekDay(weekDay.dt)} 
           </div>
-          <div class="month">
-            May 21
-          </div>
+          
           <div class forecast-temperature>
             <span class="temperature-max">${Math.round(
               weekDay.temp.max
@@ -77,7 +75,7 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
+  //console.log(coordinates);
   let apiKey = "6e6ec494746b5229a9f2d526478c924c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
@@ -86,6 +84,8 @@ function getForecast(coordinates) {
 
 
 function showTemperature(response) {
+
+  console.log(response.data);
   let city = document.querySelector("#city");
   let temperatureElement = document.querySelector("#current-temperature");
   let description = document.querySelector("#description");
@@ -93,10 +93,11 @@ function showTemperature(response) {
   let windSpeed = document.querySelector("#wind");
   let time = document.querySelector("#time");
   let icon = document.querySelector("#icon");
+  let temperatureMax = document.querySelector("#temperature-max");
+  let temperatureMin = document.querySelector("#temperature-min");
 
   celsiusTemperature = response.data.main.temp;
 
-  //console.log(response.data);
   city.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   description.innerHTML = response.data.weather[0].description;
@@ -105,6 +106,8 @@ function showTemperature(response) {
   time.innerHTML = formatDate(response.data.dt * 1000);
   icon.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   icon.setAttribute("alt", response.data.weather[0].description);
+  temperatureMax.innerHTML = `${Math.round(response.data.main.temp_max)}° - `;
+  temperatureMin.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
 
   getForecast(response.data.coord);
 }
