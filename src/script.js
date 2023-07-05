@@ -1,3 +1,5 @@
+//try change api units=metric!!! when swich C/F
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -39,10 +41,9 @@ function formatWeekDay(timestamp) {
 
 function displayForecast(response) {
   let week = response.data.daily;
-  //console.log(week);
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
+  
   week.forEach(function (weekDay, index) {
     if (index > 0 & index < 7) {
       forecastHTML =
@@ -84,7 +85,6 @@ function getForecast(coordinates) {
 
 function showTemperature(response) {
 
-  console.log(response.data);
   let city = document.querySelector("#city");
   let temperatureElement = document.querySelector("#current-temperature");
   let description = document.querySelector("#description");
@@ -136,7 +136,7 @@ function changeCelsius(event) {
   let currentTemperature = document.querySelector("#current-temperature");
   let temperatureMax = document.querySelector("#temperature-max");
   let temperatureMin = document.querySelector("#temperature-min");
-
+  
   let temperature = (celsiusTemperature * 9) / 5 + 32;
   let currentTemperatureMax = (celsiusMax * 9) / 5 + 32;
   let currentTemperatureMin = (celsiusMin * 9) / 5 + 32;
@@ -166,6 +166,7 @@ let celsiusMin = null;
 
 let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", changeCelsius);
+//fahrenheitElement.addEventListener("click", convertedForecast);
 
 let celsiusElement = document.querySelector("#celsius");
 celsiusElement.addEventListener("click", changeFahrenheit);
