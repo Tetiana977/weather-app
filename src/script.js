@@ -113,7 +113,10 @@ function showTemperature(response) {
   getForecast(response.data.coord);
 }
 
-function submitForm(event) {
+
+
+
+function submitFormCelsius(event) {
   event.preventDefault();
   let apiKey = "6e6ec494746b5229a9f2d526478c924c";
   let units = "metric";
@@ -123,12 +126,29 @@ function submitForm(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function submitFormFahrenheit(event) {
+  event.preventDefault();
+  let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+  let units = "imperial";
+  let userCity = document.querySelector("#user-city").value;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+
 let formSearch = document.querySelector("#city-search");
-formSearch.addEventListener("submit", submitForm);
+formSearch.addEventListener("submit", submitFormCelsius);
+
+let fahrenheitElement = document.querySelector("#fahrenheit");
+fahrenheitElement.addEventListener("click", submitFormFahrenheit);
+
+let celsiusElement = document.querySelector("#celsius");
+celsiusElement.addEventListener("click", submitFormCelsius);
+
 
 //Display a temperature in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
 
-function changeCelsius(event) {
+/*function changeCelsius(event) {
   event.preventDefault();
   celsiusElement.classList.remove("activ");
   fahrenheitElement.classList.add("activ");
@@ -168,23 +188,40 @@ let fahrenheitElement = document.querySelector("#fahrenheit");
 fahrenheitElement.addEventListener("click", changeCelsius);
 
 let celsiusElement = document.querySelector("#celsius");
-celsiusElement.addEventListener("click", changeFahrenheit);
+celsiusElement.addEventListener("click", changeFahrenheit); */
 
 // User`s current position
 
-function getPosition(position) {
+function getPositionCelsius(position) {
   let apiKey = "6e6ec494746b5229a9f2d526478c924c";
   let currentLatitude = position.coords.latitude;
   let currentLongitude = position.coords.longitude;
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=metric&appid=${apiKey}`;
+  let units = "metric";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=${units}&appid=${apiKey}`;
+
+  axios.get(url).then(showTemperature);
+}
+
+function getPositionFarenheit(position) {
+  let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+  let currentLatitude = position.coords.latitude;
+  let currentLongitude = position.coords.longitude;
+  let units = "imperial";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&units=${units}&appid=${apiKey}`;
 
   axios.get(url).then(showTemperature);
 }
 
 function getUserPosition(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(getPosition);
+  navigator.geolocation.getCurrentPosition(getPositionCelsius);
 }
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getUserPosition);
+
+function convert(event) {
+  event.preventDefault();
+  submitFormFahrenheit();
+  getPositionFarenheit();
+}
